@@ -1,0 +1,35 @@
+---
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: kelly-trigger
+  namespace: work-conversation
+spec:
+  broker: conversation-broker
+  filter:
+    attributes:
+      type: com.iancoffey.conversation.message
+      subject: kelly
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1alpha1
+      kind: Service
+      name: kelly
+
+---
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: kelly-trigger-all
+  namespace: work-conversation
+spec:
+  broker: conversation-broker
+  filter:
+    attributes:
+      type: com.iancoffey.conversation.message
+      subject: all
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1alpha1
+      kind: Service
+      name: kelly

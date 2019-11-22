@@ -1,0 +1,14 @@
+---
+# Our broker is the air and space around our group conversation.
+# Every message is put into our broker and we use trigger filters to make sure they get to the right person(s?) in the convo.
+# We send both heartbeat and conversation events here.
+# the bin/add_actor script provisions a trigger with a filter on type and subject (name)
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Broker
+metadata:
+  name: conversation-broker
+  namespace: work-conversation
+spec:
+  channelTemplateSpec:
+    apiVersion: messaging.knative.dev/v1alpha1
+    kind: InMemoryChannel

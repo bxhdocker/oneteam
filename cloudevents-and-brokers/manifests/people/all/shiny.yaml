@@ -1,0 +1,28 @@
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: ContainerSource
+metadata:
+  namespace: work-conversation
+  name: all
+spec:
+  template:
+    spec:
+      containers:
+        - image: index.docker.io/iancoffey/message-17a224fa9e2b74d49f523049e2991d1c@sha256:ef634cb019fa088610689c954ebd0ebf47804748dd7fdc2c9adb3f21e967145f
+          name: all-magic-spell-shiny
+          env:
+            - name: EVENT_TYPE
+              value: "com.iancoffey.conversation.sleepspell"
+            - name: SENDER_NAME
+              value: "architect"
+            - name: RECIPIENT_NAME
+              value: all
+            - name: MOOD
+              value: "entranced"
+            - name: MESSAGE
+              value: "Behold! Something shiny."
+            - name: SHINY
+              value: "true"
+  sink:
+    apiVersion: serving.knative.dev/v1alpha1
+    kind: Service
+    name: all

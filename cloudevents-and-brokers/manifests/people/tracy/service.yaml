@@ -1,0 +1,24 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: tracy
+  namespace: work-conversation
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+    spec:
+      serviceAccountName: actor-account
+      containers:
+      - image: index.docker.io/iancoffey/actor-1bcccc7d9a5ff4724b951faf3b7f1cbf@sha256:45583f61703da95e85abc63611290ccc1f3292e797487da6ead32a2a7949ff86
+        env:
+        - name: NAME
+          value: tracy
+        - name: MESSAGES_DATA
+          value: '{"conversations":[{"hello":[{"output":"heyo","input":"nice to see you"},{"output":"whats crackin","input":"hey how are you today?"}],"shiny":[{"output":"shiny object!","input":"wow look it IS shiny"},{"output":"hey look shiny shiny shiny shiny","input":"GLITTERY!!!!"}],"conversation":[{"output":"I love to fish!","input":"Oh you dont say?"},{"output":"what glorious weather","input":"I think you are saying interesting stuff"},{"output":"zzzzzzzz","input":"night night!"},{"output":"IM SO MAD","input":"wow chill"},{"output":"Im TOO ANGRY to talk right now","input":"wow this person is ready to FIGHT yall"}]},{"hello":[{"output":"hello","input":"how do you do"},{"output":"nice to meet yall","input":"very good to meet you as well"}],"shiny":[{"output":"What were we saying? That thing is just so GLITTERY AND SHINY","input":"wow look it IS shiny"},{"output":"I cant concentrate on anything but that glittery perfect object","input":"GLITTERY!!!!"}],"conversation":[{"output":"you say the weirdest stuff","input":"And you dont?"},{"output":"do you ever feel like you are being watched?","input":"of course, all the time"},{"output":"cya","input":"ok bye then"},{"output":"im peacing out","input":"catch you on the flip side!"},{"output":"oops my bad","input":"zzzzsnorezzzz"},{"output":"AHHHHHH ANGRY AHHH","input":"oh you want trouble?"},{"output":"Monster Smash! SO MAD","input":"You better treat me with respect, buster!"}]},{"hello":[{"output":"here I am everyone","input":"yes you made it!"},{"output":"I have arrived!","input":"oh so exciting you are here"}],"shiny":[{"output":"Super distracted by that weird glowing ball, what is that I cant look away","input":"wow look it IS shiny"},{"output":"Its perfect! And it glitters. Amazing. Can we keep it?","input":"GLITTERY!!!!"}],"conversation":[{"output":"This is getting a little boring","input":"Thats just rude"},{"output":"What a wild time to be an application!","input":"Everything seems exciting today"},{"output":"time to jet","input":"cyaaaa"},{"output":"im leaving everyone!","input":"bye bye friend"},{"output":"zzzzzzzz","input":"night night!"},{"output":"oh i just dont know how to control my rage","input":"holy macaroni calm down"},{"output":"im MAD and I cant HIDE IT","input":"you are too loud! and wild!"}]}]}'
+        - name: MESSAGE_IMAGE
+          value: index.docker.io/iancoffey/message-17a224fa9e2b74d49f523049e2991d1c@sha256:6d9d3ba787c1331355b59cbbbc41ea6e2496f2d7f79f160715fb971f7103f8a9
+        - name: DEBUG
+          value: "TRUE"
+      timeoutSeconds: 600

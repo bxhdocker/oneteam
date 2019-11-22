@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Use kubetail to gather and arrange our convo output!
+kail -n work-conversation | grep --line-buffered conversation\-\> | awk -F'conversation->' '{print $2}'

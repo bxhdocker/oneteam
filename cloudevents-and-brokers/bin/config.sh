@@ -1,0 +1,4 @@
+export ACTOR_IMAGE="index.docker.io/iancoffey/actor-1bcccc7d9a5ff4724b951faf3b7f1cbf@sha256:c7cf0decabefd61837b6dee506a7a903c70731ee0fdb64197c96ccd6c06eae97"
+export MESSAGE_IMAGE="index.docker.io/iancoffey/message-17a224fa9e2b74d49f523049e2991d1c@sha256:140040cc093b7ae14a75369c8d69c29c563d0324213fcef4e795004b91ea5c69"
+export NAMESPACE="work-conversation"
+export BROKER_NAME="conversation-broker"

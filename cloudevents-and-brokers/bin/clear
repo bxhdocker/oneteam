@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Just delete everything so we can start anew!
+
+kubectl delete deployment --all -n work-conversation
+
+kubectl delete containersource --all -n work-conversation
+
+kubectl delete trigger --all -n work-conversation
+
+kubectl delete service --all -n work-conversatio

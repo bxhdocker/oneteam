@@ -1,0 +1,35 @@
+---
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: tracy-trigger
+  namespace: work-conversation
+spec:
+  broker: conversation-broker
+  filter:
+    attributes:
+      type: com.iancoffey.conversation.message
+      subject: tracy
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1alpha1
+      kind: Service
+      name: tracy
+
+---
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: tracy-trigger-all
+  namespace: work-conversation
+spec:
+  broker: conversation-broker
+  filter:
+    attributes:
+      type: com.iancoffey.conversation.message
+      subject: all
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1alpha1
+      kind: Service
+      name: tracy
